@@ -1,5 +1,6 @@
 import React from 'react';
 import Home from './views/Home/Home';
+import MoviesList from './views/MoviesList/MoviesList';
 import {
     SafeAreaView,
     ScrollView,
@@ -15,7 +16,7 @@ class App extends React.Component {
     render() {
         return(
             <SafeAreaView>
-                <Home />
+                <MoviesList />
             </SafeAreaView>
         )
     }

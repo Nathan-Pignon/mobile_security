@@ -13,9 +13,7 @@ class Home extends React.Component {
 
     render() {
       return(
-        <SafeAreaView>
             <Text>Bonjour</Text>
-        </SafeAreaView>
       )
     }
 }
