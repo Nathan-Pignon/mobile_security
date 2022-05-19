@@ -10,7 +10,6 @@ import {
     FlatList,
     View,
     } from 'react-native';
-import { render } from 'react-native/Libraries/Renderer/implementations/ReactNativeRenderer-prod';
 import MoviesListItem from '../../components/MoviesList/MoviesListItem';
 
 class MoviesList extends React.Component {
@@ -36,7 +35,7 @@ class MoviesList extends React.Component {
                     currentMovies.push(movie);
                 }
                 this.setState({movies: currentMovies ? currentMovies : []});
-                this.setState({currentPage: json.page ? json.currentPage : 1});
+                this.setState({currentPage: json.page ? (json.page + 1) : 1});
             })
             .catch((error) => {
                 console.error(error);
@@ -51,6 +50,7 @@ class MoviesList extends React.Component {
                     data={this.state.movies}
                     renderItem={(item, index) => <MoviesListItem key={index} item={item} />}
                     keyExtractor={movie => movie.id}
+                    onEndReached={this.loadMovies}
                  />
             </SafeAreaView>
         )
