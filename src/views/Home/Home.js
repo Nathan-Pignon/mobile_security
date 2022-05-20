@@ -11,25 +11,24 @@ import {
     TouchableOpacity,
     } from 'react-native';
 
-class Home extends React.Component {
+function Home ({ navigation }) {
 
-    render() {
-      return(
-        <View>
-            <Text>Bonjour test</Text>
-            <Image
-            style={styles.logo}
-            source={require('../../assets/logo/logo_ca.png')}
-            />
-            <View style={[styles.buttonView, { backgroundColor: 'blue', borderColor: 'black' }]}>
-                <TouchableOpacity
-                style={styles.button}>
-                <Text style={{ color: 'white', fontSize: 20 }}> Bienvenue </Text>
-                </TouchableOpacity>
-            </View>
+  return(
+    <SafeAreaView>
+        <Image
+        style={styles.logo}
+        source={require('../../assets/logo/logo_ca.png')}
+        />
+        <View style={[styles.buttonView, { backgroundColor: 'blue', borderColor: 'black' }]}>
+            <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("Movies")}
+            >
+            <Text style={{ color: 'white', fontSize: 20 }}> Bienvenue </Text>
+            </TouchableOpacity>
         </View>
-      )
-    }
+    </SafeAreaView>
+  )
 }
 
 const styles = StyleSheet.create({

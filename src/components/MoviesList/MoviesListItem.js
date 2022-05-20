@@ -9,6 +9,7 @@ import {
     useColorScheme,
     View,
     ImageBackground,
+    TouchableOpacity
     } from 'react-native';
 
 class MoviesListItem extends React.Component {
@@ -19,10 +20,11 @@ class MoviesListItem extends React.Component {
 
 
     render() {
+        const {onOpenMovieDetail} = this.props;
         const item = this.props.item.item;
         const image = {uri: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/' + item.poster_path};
         return(
-            <View style={styles.itemContainer}>
+            <TouchableOpacity style={styles.itemContainer} onPress={() => onOpenMovieDetail(item)}>
                 <ImageBackground source={image} resizeMode="cover" style={styles.image}>
                     <View style={styles.infoContainer}>
                         <Text style={styles.title}>
@@ -31,7 +33,7 @@ class MoviesListItem extends React.Component {
                         <StarRating style={styles.starRating} rating={item.vote_average/2} color={'#ffffff'} onChange={(number) => console.log(number)} starSize={24} />
                     </View>
                 </ImageBackground>
-            </View>
+            </TouchableOpacity>
         )
     }
 }

@@ -10,7 +10,7 @@ import {
     FlatList,
     View,
     } from 'react-native';
-import MoviesListItem from '../../components/MoviesList/MoviesListItem';
+import MoviesListItem from './MoviesListItem';
 
 class MoviesList extends React.Component {
 
@@ -43,12 +43,12 @@ class MoviesList extends React.Component {
     }
 
     render() {
+        const {onOpenMovieDetail} = this.props;
         return(
             <SafeAreaView style={styles.listContainer}>
-                <Text style={styles.mainTitle}>Liste de films</Text>
                 <FlatList
                     data={this.state.movies}
-                    renderItem={(item, index) => <MoviesListItem key={index} item={item} />}
+                    renderItem={(item, index) => <MoviesListItem key={index} item={item} onOpenMovieDetail={() => onOpenMovieDetail(item)}/>}
                     keyExtractor={movie => movie.id}
                     onEndReached={this.loadMovies}
                  />
@@ -58,12 +58,6 @@ class MoviesList extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    mainTitle: {
-        alignSelf: "center",
-        textAlignVertical: "center",
-        fontSize: 35,
-        lineHeight: 50,
-    },
     listContainer: {
         paddingTop: 20,
         paddingBottom: 20,
