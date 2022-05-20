@@ -1,59 +1,34 @@
 import React from 'react';
-import {API_URL, API_CONFIG} from "@env";
 import {
     SafeAreaView,
-    ScrollView,
-    StatusBar,
     StyleSheet,
     Text,
-    useColorScheme,
-    FlatList,
-    View,
     } from 'react-native';
 
-class MovieDetails extends React.Component {
+function MovieDetails({route, navigation}) {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            movie: {},
-        }
-    }
+    const {movie} = route.params;
 
-    componentDidMount() {
-        this.loadMovie();
-    }
-
-    loadMovie = async () => {
-        return fetch(API_URL + '/movie/popular' + API_CONFIG + '&page=' + this.state.currentPage.toString())
-            .then((response) => response.json())
-            .then((json) => {
-                let currentMovies = this.state.movies;
-                for(let movie of json.results) {
-                    currentMovies.push(movie);
-                }
-                this.setState({movies: currentMovies ? currentMovies : []});
-                this.setState({currentPage: json.page ? (json.page + 1) : 1});
-            })
-            .catch((error) => {
-                console.error(error);
-        });
-    }
-
-    render() {
-        return(
-            <SafeAreaView style={styles.listContainer}>
-                <Text>Yes</Text>
-            </SafeAreaView>
-        )
-    }
+    return(
+        <SafeAreaView style={styles.container}>
+            <Text>{movie.item.original_title}</Text>
+            <Text>{movie.item.overview}</Text>
+            <Text>{movie.item.release_date}</Text>
+            <Text>{movie.item.vote_average}/10 ({movie.item.vote_count})</Text>
+        </SafeAreaView>
+    )
 }
 
 const styles = StyleSheet.create({
-    listContainer: {
+    container: {
         paddingTop: 20,
         paddingBottom: 20,
-    }
+        paddingLeft: 10,
+        paddingRight: 10,
+        justifyContent: "space-around",
+        flex: 1,
+        alignItems: "center"
+    },
 })
 
 export default MovieDetails;

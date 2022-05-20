@@ -4,7 +4,9 @@ import MoviesList from '../../components/MoviesList/MoviesList';
 function Movies ({ navigation }) {
 
     const onOpenMovieDetail = (movie) => {
-        console.log("movie", movie.item.id)
+        navigation.navigate('MovieDetails', {
+            movie: movie,
+          });
     }
 
     return(

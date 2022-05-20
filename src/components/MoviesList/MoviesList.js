@@ -2,13 +2,8 @@ import React from 'react';
 import {API_URL, API_CONFIG} from "@env";
 import {
     SafeAreaView,
-    ScrollView,
-    StatusBar,
     StyleSheet,
-    Text,
-    useColorScheme,
     FlatList,
-    View,
     } from 'react-native';
 import MoviesListItem from './MoviesListItem';
 

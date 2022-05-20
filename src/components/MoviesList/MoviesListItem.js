@@ -1,12 +1,8 @@
 import React from 'react';
 import StarRating from 'react-native-star-rating-widget';
 import {
-    SafeAreaView,
-    ScrollView,
-    StatusBar,
     StyleSheet,
     Text,
-    useColorScheme,
     View,
     ImageBackground,
     TouchableOpacity
@@ -30,7 +26,7 @@ class MoviesListItem extends React.Component {
                         <Text style={styles.title}>
                             {item.original_title.length > 30 ? item.original_title.substring(0,29) + '...' : item.original_title}
                         </Text>
-                        <StarRating style={styles.starRating} rating={item.vote_average/2} color={'#ffffff'} onChange={(number) => console.log(number)} starSize={24} />
+                        <StarRating style={styles.starRating} rating={item.vote_average/2} color={'#ffffff'} onChange={() => {}} starSize={24} />
                     </View>
                 </ImageBackground>
             </TouchableOpacity>
