@@ -25,7 +25,9 @@ class MoviesListItem extends React.Component {
             <View style={styles.itemContainer}>
                 <ImageBackground source={image} resizeMode="cover" style={styles.image}>
                     <View style={styles.infoContainer}>
-                        <Text style={styles.title}>{item.original_title}</Text>
+                        <Text style={styles.title}>
+                            {item.original_title.length > 30 ? item.original_title.substring(0,29) + '...' : item.original_title}
+                        </Text>
                         <StarRating style={styles.starRating} rating={item.vote_average/2} color={'#ffffff'} onChange={(number) => console.log(number)} starSize={24} />
                     </View>
                 </ImageBackground>

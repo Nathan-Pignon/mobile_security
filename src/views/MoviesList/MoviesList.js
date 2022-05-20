@@ -45,7 +45,7 @@ class MoviesList extends React.Component {
     render() {
         return(
             <SafeAreaView style={styles.listContainer}>
-                <Text>Liste de films</Text>
+                <Text style={styles.mainTitle}>Liste de films</Text>
                 <FlatList
                     data={this.state.movies}
                     renderItem={(item, index) => <MoviesListItem key={index} item={item} />}
@@ -58,8 +58,15 @@ class MoviesList extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    mainTitle: {
+        alignSelf: "center",
+        textAlignVertical: "center",
+        fontSize: 35,
+        lineHeight: 50,
+    },
     listContainer: {
-        padding: 20,
+        paddingTop: 20,
+        paddingBottom: 20,
     }
 })
 
